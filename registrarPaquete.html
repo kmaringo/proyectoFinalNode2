@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar</title>
+    <!-- Agrega los enlaces a los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container2">
+        <div class="card p-4">
+            <h3 class="text-center mb-4">Registrar Paquetes</h3>
+            <form>
+                <input type="hidden" class="form-control mb-3" id="_id">
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                </div>
+
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" class="form-control" id="precio" step="any" placeholder="Precio" min="1000">
+                </div>
+
+                <div class="mb-3">
+                    <label for="estado" class="form-label">Estado</label>
+                    <input type="text" class="form-control" id="estado" placeholder="Estado">
+                </div>
+
+                <div class="text-center">
+                    <button id="btnRegistrar" class="btn btn-outline-primary">Crear Paquete</button>
+                    <a href="home.html" class="btn btn-outline-primary">Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Agrega el enlace al script de Bootstrap y cualquier otro script que necesites -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="funcionesJS/paqueteJS.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+  .btnlistar {
+      background-color: #8000ff;
+      color: white;
+      border-color: #8000ff;
+    }
+
+  .btnlistar:hover {
+    background-color: rgb(199, 114, 255);
+    border-color: #8000ff;
+  }
+
+  .containerlistar{
+    margin: 12%;
+  }
+
+  .btnlistarcrear{
+    background-color: #8000ff;
+    color: white;
+    border-color: #8000ff;
+    margin-right: 70%;
+  }
+
+  .btnlistarcrear:hover {
+    background-color: rgb(199, 114, 255);
+    border-color: #8000ff;
+  }
+
+ 
+
+  
+
+
+
+
+
+  
