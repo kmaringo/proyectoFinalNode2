@@ -7,14 +7,16 @@ const listarProducto = async () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                const producto = data.producto;
-                producto.map((producto) => {
+                const productos = data.producto;
+                productos.map((producto) => {
                     console.log(producto);
 
                     mensaje += `<tr><td>${producto.nombre}</td>` +
                         `<td>${producto.descripcion}</td>` +
                         `<td>${producto.precio}</td>` +
                         `<td>${producto.estado}</td>` +
+                        
+
                         `<td>
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(producto)})'>Editar</a>
                     <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick='eliminar("${producto._id}")'>Eliminar</a>
@@ -43,7 +45,7 @@ const registrarProducto = async () => {
         estado: estado
     };
 
-    if (precio>=1000) {
+    if (precio>0) {
         fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -53,7 +55,7 @@ const registrarProducto = async () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                alert(data.producto + ' Se realizo la modificación exitosamente');
+                alert(data.producto + ' Se registro exitosamente');
                 window.location.href = "listarProducto.html";
             });
     } else {
@@ -62,34 +64,35 @@ const registrarProducto = async () => {
 };
 
 
-const editar = (producto) => {
-    let _id = document.getElementById('_id').value = '';
-    let nombre = document.getElementById('nombre').value = '';
-    let descripcion = document.getElementById('descripcion').value = '';
-    let precio = document.getElementById('precio').value = '';
-    let estado = document.getElementById('estado').value = '';
+    const editar = (producto) => {
+        let _id = document.getElementById('_id').value = '';
+        let nombre = document.getElementById('nombre').value = '';
+        let descripcion = document.getElementById('descripcion').value = '';
+        let precio = document.getElementById('precio').value = '';
+        let estado = document.getElementById('estado').value = '';
 
-    document.getElementById('_id').value = producto._id;
-    document.getElementById('nombre').value = producto.nombre;
-    document.getElementById('descripcion').value = producto.descripcion;
-    document.getElementById('precio').value = producto.precio;
-    document.getElementById('estado').value = producto.estado;
-}
-const actualizarProducto = async () => {
-    let nombre = document.getElementById('nombre').value;
-    let descripcion = document.getElementById('descripcion').value;
-    let precio = document.getElementById('precio').value;
-    let estado = document.getElementById('estado').value;
-
-    let producto = {
-        _id: document.getElementById('_id').value,
-        nombre: nombre,
-        descripcion: descripcion,
-        precio: precio,
-        estado: estado
-
-    };
-    if (precio>=1000) {
+        document.getElementById('_id').value = producto._id;
+        document.getElementById('nombre').value = producto.nombre;
+        document.getElementById('descripcion').value = producto.descripcion;
+        document.getElementById('precio').value = producto.precio;
+        document.getElementById('estado').value = producto.estado;
+    }
+    
+    const actualizarProducto = async () => {
+        let nombre = document.getElementById('nombre').value;
+        let descripcion = document.getElementById('descripcion').value;
+        let precio = parseFloat(document.getElementById('precio').value);
+        let estado = document.getElementById('estado').value;
+    
+        let producto = {
+            _id: document.getElementById('_id').value,
+            nombre: nombre,
+            descripcion: descripcion,
+            precio: precio,
+            estado: estado
+        };
+        
+    if (precio>0) {
         fetch(url, {
             method: 'PUT',
             mode: 'cors',
@@ -98,16 +101,14 @@ const actualizarProducto = async () => {
         })
             .then(response => response.json())
             .then(json => {
-                
                 alert(json.mensaje);
+                alert("Se editó correctamente");
                 window.location.href = "listarProducto.html";
             })
 
     } else {
         alert('No se pudo realizar la modificación');
     }
-
-
 };
 
 const eliminar = (_id) => {
@@ -130,25 +131,20 @@ const eliminar = (_id) => {
 
 
 
+    if (document.querySelector('#btnRegistrar')) {
+        document.querySelector('#btnRegistrar')
+            .addEventListener('click', registrarProducto)
 
+    }
 
-if (document.querySelector('#btnRegistrar')) {
-    document.querySelector('#btnRegistrar')
-        .addEventListener('click', registrarProducto)
+    if (document.querySelector('#editar')) {
+        document.querySelector('#editar')
+            .addEventListener('click', editar)
+        console.log(_id)
 
-}
+    }
 
-
-
-if (document.querySelector('#editar')) {
-    document.querySelector('#editar')
-        .addEventListener('click', editar)
-    console.log(_id)
-
-}
-
-
-const editarButton = document.querySelector('#btnEditar');
-if (editarButton) {
-    editarButton.addEventListener('click', actualizarProducto);
-}
+    const editarButton = document.querySelector('#btnEditar');
+    if (editarButton) {
+        editarButton.addEventListener('click', actualizarProducto);
+    }

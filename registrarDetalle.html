@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Paquete</title>
+    <title>Registrar Detalle</title>
     <!-- Agrega los enlaces a los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registro.css">
 </head>
 <body>
     <div class="container2">
         <div class="card p-4">
             <h3 class="text-center mb-4">Registrar Detalle Paquete</h3>
-            <form>
+            <!-- <form> -->
                 <input type="hidden" class="form-control mb-3" id="_id">
 
                 <div class="mb-3">
                     <label for="idPaquete" class="form-label">Id Paquete</label>
-                    <input type="text" class="form-control" id="idPaquete" placeholder="id Paquete">
+                    <input type="number" class="form-control" id="idPaquete" placeholder="Id Paquete">
                 </div>
 
                 <div class="mb-3">
@@ -27,18 +27,16 @@
 
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Cantidad</label>
-                    <input type="number" class="form-control" id="cantidad"placeholder="Cantidad">
+                    <input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
                 </div>
-
                 <div class="text-center">
-                    <button id="btnRegistrar" class="btn btn-outline-primary">Crear</button>
-                        <a href="home.html" class="btn btn-outline-primary">Regresar</a>
+                    <button id="btnRegistrar" class="btn btn-outline-primary">Crear Detalle</button>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="/funcionesJS/detalleJS.js"></script>
+    <script src="funcionesJS/detalleJS.js"></script>
 </body>
 </html>

@@ -7,8 +7,8 @@ const listarDetalle = async () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                const detalle = data.detalle;
-                detalle.map((detalle) => {
+                const detalles = data.detalle;
+                detalles.map((detalle) => {
                     console.log(detalle);
 
                     mensaje += `<tr><td>${detalle.idPaquete}</td>` +
@@ -16,11 +16,10 @@ const listarDetalle = async () => {
                         `<td>${detalle.cantidad}</td>` +
                         `<td>
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(detalle)})'>Editar</a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick='eliminar("${detalle._id}")'>Eliminar</a>
-                 </td></tr>`;
-                    body.innerHTML = mensaje;
+                    <a class="waves-effect waves-light btn modal-trigger purple" href="#" onclick='eliminar("${detalle._id}")'>Eliminar</a>
+                 </td></tr>`;  
                 });
-
+                body.innerHTML = mensaje;
             })
     }
 };
@@ -37,10 +36,10 @@ const registrarDetalle= async () => {
     let detalle = {
         idPaquete: idPaquete,
         tipo: tipo,
-        cantidad: cantidad,
+        cantidad: cantidad
     };
 
-    if (precio>=1000) {
+    if (cantidad>0) {
         fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -82,7 +81,7 @@ const actualizarDetalle = async () => {
         cantidad: cantidad,
 
     };
-    if (precio>=1000) {
+    if (cantidad>0) {
         fetch(url, {
             method: 'PUT',
             mode: 'cors',
