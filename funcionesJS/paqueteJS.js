@@ -43,31 +43,36 @@ const registrarPaquete = async () => {
         estado: estado
     };
 
-    if (precio>0) {
+    if (precio > 0) {
         const regExpName = /([A-Za-z0-9\s])/;
-        if(!regExpName.test(nombre)){
-            alert('Ingresa nombre')
-            return
+        if (!regExpName.test(nombre)) {
+          alert('Ingresa nombre');
+          return;
         }
-        if(!regExpName.test(descripcion)){
-            alert('Ingresa descripción')
-            return
+        if (!regExpName.test(descripcion)) {
+          alert('Ingresa descripción');
+          return;
         }
+        if (estado !== "Activo" && estado !== "Inactivo") {
+          alert('Ingresa un estado correcto');
+          return;
+        }
+      
         fetch(url, {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(paquete),
-            headers: { "Content-type": "application/json; charset=UTF-8" },
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify(paquete),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                alert('Paquete registrado exitosamente');
-                window.location.href = "listarPaquete.html";
-            });
-    } else {
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            alert('Paquete registrado exitosamente');
+            window.location.href = "listarPaquete.html";
+          });
+      } else {
         alert('No se puede registrar');
-    }
+      }
 };
 
 
@@ -98,32 +103,30 @@ const actualizarPaquete = async () => {
         estado: estado
 
     };
-    if (precio>0) {
+    if (precio > 0) {
         const regExpName = /([A-Za-z0-9\s])/;
-        if(!regExpName.test(nombre)){
-            return
+        if (!regExpName.test(nombre)) {
+          return;
         }
-        if(!regExpName.test(descripcion)){
-            return
+        if (!regExpName.test(descripcion)) {
+          return;
         }
+      
         fetch(url, {
-            method: 'PUT',
-            mode: 'cors',
-            body: JSON.stringify(paquete),
-            headers: { "Content-type": "application/json; charset=UTF-8" }
+          method: 'PUT',
+          mode: 'cors',
+          body: JSON.stringify(paquete),
+          headers: { "Content-type": "application/json; charset=UTF-8" }
         })
-            .then(response => response.json())
-            .then(json => {
-                
-                alert(json.mensaje);
-                window.location.href = "listarPaquete.html";
-            })
-
-    } else {
+          .then(response => response.json())
+          .then(json => {
+            alert(json.mensaje);
+            window.location.href = "listarPaquete.html";
+          });
+      
+      } else {
         alert('No se pudo realizar la modificación');
-    }
-
-
+      }
 };
 
 const eliminar = (_id) => {

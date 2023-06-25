@@ -7,8 +7,47 @@
     <!-- Agrega los enlaces a los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="css/submenu.css">
+    <style>
+        footer {
+            background-color: #D8BFD8;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <div id="containerMenu">
+        <img src="img/logoLT.png" alt="">
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#">CLIENTE</a></li>
+                <li><a href="#">CARRITO</a></li>
+                <li><a href="#">EVENTOS</a></li>
+                <li><a href="#">VENTAS</a></li>
+                <li>
+                    <a href="#">USUARIO</a>
+                    <ul class="submenu">
+                        <li><a href="#">ROLES</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">PRODUCTOS Y SERVICIOS</a>
+                    <ul class="submenu">
+                        <li><a href="#">CATEGORÍA</a></li>
+                        <li><a href="registrarPaquete.html">PAQUETE</a></li>
+                        <li><a href="#">SERVICIO</a></li>
+                        <li><a href="registrarProducto.html">PRODUCTO</a></li>
+                        <li><a href="#">PLATO</a></li>
+                        <li><a href="#">INGREDIENTE</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="container2">
         <div class="card p-4">
             <h3 class="text-center mb-4">Registrar servicio</h3>
@@ -32,17 +71,29 @@
 
                 <div class="mb-3">
                     <label for="estado" class="form-label">Estado</label>
-                    <input type="text" class="form-control" id="estado" placeholder="Estado">
+                    <input type="text" class="form-control" id="estado" placeholder="Activo/Inactivo">
                 </div>
 
                 <div class="text-center">
                     <button id="btnRegistrar" class="btn btn-outline-primary">Crear Servicio</button>
-                    <a href="home.html" class="btn btn-outline-primary">Regresar</a>
+                    <a href="index.html" class="btn btn-outline-primary">Regresar</a>
                 </div>
             <!-- </form> -->
         </div>
     </div>
-    
+
+    <footer style="background-color: #D8BFD8;">
+        <footer id="contacto">
+            <div class="footer-redes">
+                <br>
+                <ul class="fuente" style="list-style-type: none">
+                    <li>Localidad: Medellín, Antioquia</li>
+                    <li>Teléfono: 60400000</li>
+                    <li>Corre electónico: decoracionesLT.com</li>
+                </ul>
+                <br>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="funcionesJS/servicioJS.js"></script>
 </body>

@@ -43,36 +43,35 @@ const registrarServicio = async () => {
         estado: estado
     };
 
-    // function validarNombre(nombre) {
-    //     var regex = /^[a-zA-Z]+$/;
-    //     return regex.test(nombre);
-    //   }
-
-    if (precio>0) {
+    if (precio > 0) {
         const regExpName = /([A-Za-z0-9\s])/;
-        if(!regExpName.test(nombre)){
-            alert('Ingresa nombre')
-            return
+        if (!regExpName.test(nombre)) {
+          alert('Ingresa nombre');
+          return;
         }
-        if(!regExpName.test(descripcion)){
-            alert('Ingresa descripción')
-            return
+        if (!regExpName.test(descripcion)) {
+          alert('Ingresa descripción');
+          return;
+        }
+        if (estado !== "Activo" && estado !== "Inactivo") {
+          alert('Ingresa un estado correcto');
+          return;
         }
         fetch(url, {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(servicio),
-            headers: { "Content-type": "application/json; charset=UTF-8" },
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify(servicio),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                alert(data.servicio + ' Se registro exitosamente');
-                window.location.href = "listarServicio.html";
-            });
-    } else {
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            alert(' Se registró exitosamente');
+            window.location.href = "listarServicio.html";
+          });
+      } else {
         alert('No se puede registrar');
-    }
+      }
 };
 
 
@@ -104,30 +103,34 @@ const registrarServicio = async () => {
 
     };
 
-    if (precio>0) {
+    if (precio > 0) {
         const regExpName = /([A-Za-z0-9\s])/;
-        if(!regExpName.test(nombre)){
-            return
+        if (!regExpName.test(nombre)) {
+          return;
         }
-        if(!regExpName.test(descripcion)){
-            return
+        if (!regExpName.test(descripcion)) {
+          return;
         }
+        if (estado !== "Activo" && estado !== "Inactivo") {
+          alert('Ingresa un estado correcto');
+          return;
+        }
+      
         fetch(url, {
-            method: 'PUT',
-            mode: 'cors',
-            body: JSON.stringify(servicio),
-            headers: { "Content-type": "application/json; charset=UTF-8" }
+          method: 'PUT',
+          mode: 'cors',
+          body: JSON.stringify(servicio),
+          headers: { "Content-type": "application/json; charset=UTF-8" }
         })
-            .then(response => response.json())
-            .then(json => {
-                alert(json.mensaje);
-                alert("Se editó correctamente");
-                window.location.href = "listarServicio.html";
-            })
-
-    } else {
+          .then(response => response.json())
+          .then(json => {
+            alert(json.mensaje);
+            window.location.href = "listarServicio.html";
+          });
+      
+      } else {
         alert('No se pudo realizar la modificación');
-    }
+      }
 };
 
 const eliminar = (_id) => {

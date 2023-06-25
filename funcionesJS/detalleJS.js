@@ -87,6 +87,11 @@ const actualizarDetalle = async () => {
 
     };
     if (cantidad>0) {
+        const regExpName = /([A-Za-z0-9\s])/;
+        if(!regExpName.test(tipo)){
+            alert('Ingresa el tipo')
+            return
+        }
         fetch(url, {
             method: 'PUT',
             mode: 'cors',
@@ -97,7 +102,6 @@ const actualizarDetalle = async () => {
             .then(json => {
                 
                 alert(json.mensaje);    
-                alert('Detalle modificado exitosamente');
                 window.location.href = "listarDetalle.html";
             })
 
