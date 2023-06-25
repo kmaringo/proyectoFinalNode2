@@ -19,7 +19,7 @@ const listarProducto = async () => {
 
                         `<td>
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(producto)})'>Editar</a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick='eliminar("${producto._id}")'>Eliminar</a>
+                    <a class="waves-effect waves-light btn modal-trigger purple" href="#" onclick='eliminar("${producto._id}")'>Eliminar</a>
                  </td></tr>`;
                     body.innerHTML = mensaje;
                 });
@@ -46,6 +46,15 @@ const registrarProducto = async () => {
     };
 
     if (precio>0) {
+        const regExpName = /([A-Za-z0-9\s])/;
+        if(!regExpName.test(nombre)){
+            alert('Ingresa nombre')
+            return
+        }
+        if(!regExpName.test(descripcion)){
+            alert('Ingresa descripción')
+            return
+        }
         fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -92,7 +101,14 @@ const registrarProducto = async () => {
             estado: estado
         };
         
-    if (precio>0) {
+        if (precio>0) {
+            const regExpName = /([A-Za-z0-9\s])/;
+            if(!regExpName.test(nombre)){
+                return
+            }
+            if(!regExpName.test(descripcion)){
+                return
+            }
         fetch(url, {
             method: 'PUT',
             mode: 'cors',

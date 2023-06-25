@@ -17,7 +17,7 @@ const listarPaquete = async () => {
                         `<td>${paquete.estado}</td>` +
                         `<td>
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(paquete)})'>Editar</a>
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick='eliminar("${paquete._id}")'>Eliminar</a>
+                    <a class="waves-effect waves-light btn modal-trigger purple" href="#" onclick='eliminar("${paquete._id}")'>Eliminar</a>
                  </td></tr>`;
                     body.innerHTML = mensaje;
                 });
@@ -43,7 +43,16 @@ const registrarPaquete = async () => {
         estado: estado
     };
 
-    if (precio>=1000) {
+    if (precio>0) {
+        const regExpName = /([A-Za-z0-9\s])/;
+        if(!regExpName.test(nombre)){
+            alert('Ingresa nombre')
+            return
+        }
+        if(!regExpName.test(descripcion)){
+            alert('Ingresa descripción')
+            return
+        }
         fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -53,7 +62,7 @@ const registrarPaquete = async () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                alert(data.paquete + ' Se realizo la modificación exitosamente');
+                alert('Paquete registrado exitosamente');
                 window.location.href = "listarPaquete.html";
             });
     } else {
@@ -89,7 +98,14 @@ const actualizarPaquete = async () => {
         estado: estado
 
     };
-    if (precio>=1000) {
+    if (precio>0) {
+        const regExpName = /([A-Za-z0-9\s])/;
+        if(!regExpName.test(nombre)){
+            return
+        }
+        if(!regExpName.test(descripcion)){
+            return
+        }
         fetch(url, {
             method: 'PUT',
             mode: 'cors',

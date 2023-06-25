@@ -40,6 +40,11 @@ const registrarDetalle= async () => {
     };
 
     if (cantidad>0) {
+        const regExpName = /([A-Za-z0-9\s])/;
+        if(!regExpName.test(tipo)){
+            alert('Ingresa el tipo')
+            return
+        }
         fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -49,7 +54,7 @@ const registrarDetalle= async () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                alert(data.detalle + ' Se realizo la modificación exitosamente');
+                alert('Detalle registrado exitosamente');
                 window.location.href = "listarDetalle.html";
             });
     } else {
@@ -91,7 +96,8 @@ const actualizarDetalle = async () => {
             .then(response => response.json())
             .then(json => {
                 
-                alert(json.mensaje);
+                alert(json.mensaje);    
+                alert('Detalle modificado exitosamente');
                 window.location.href = "listarDetalle.html";
             })
 
