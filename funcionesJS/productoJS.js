@@ -1,4 +1,4 @@
-const url = 'http://localhost:8282/api/producto'
+const url = 'https://proyectofinalnode.onrender.com/api/producto'
 const listarProducto = async () => {
     let body = document.getElementById('contenido');
     if (body) {

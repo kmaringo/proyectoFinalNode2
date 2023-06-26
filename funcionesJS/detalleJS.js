@@ -1,4 +1,4 @@
-const url = 'http://localhost:8282/api/detallePaquete'
+const url = 'https://proyectofinalnode.onrender.com/api/detallePaquete'
 const listarDetalle = async () => {
     let body = document.getElementById('contenido');
     if (body) {
